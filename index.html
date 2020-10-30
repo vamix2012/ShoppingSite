@@ -19,9 +19,17 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body onload="updateMenu()">
     <div class="main-layout">
-
+<div id="complete" class="hide order-complete">
+    <img src="./img/cute_burrito.png">
+    <h2>Your Order is on the way</h2>
+    <button onclick="closeWindow()" class="btn btn-danger">Close</button>
+</div>
+<div id="incomplete" class="hide order-complete">
+<h1>Please add items to Cart first!</h1>
+<button onclick="closeWindow()" class="btn btn-danger">Close</button>
+</div>
         <div class="bg-white item-list">
             <img src="./img/burritoHeader.jpg" class="header-img">
             <div class="title">
@@ -43,55 +51,13 @@
             </div>
             <div class="menu-selection">
                 <div id="popularAnchor" class="dishes">
-                    <!--  Popular Dishes -->
                     <img class="img-div" src="./img/popular.jpg">
                     <div>
                         <h4>Popular Dishes</h4>
                     </div>
                 </div>
-              
-                <div class="dish-selection-container">
-                    <div onclick="toggleButtons(1)">
-                        <h3>Mayan Avocado Salad</h3>
-                        <h5>Fresh salad with mixed vegetables and lemon juiced avocado</h5>
-                        <h6>Variatons: Chipotle-tomato sauce, Habanero sauce, more avoacado</h6>
-                    </div>
-
-
-                    <div id="sectionToBeToggled1" class="hide-extension button-layout">
-                        <button onclick="addToCart(1)" class="btn btn-primary">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="dish-selection-container">
-                    <div onclick="toggleButtons(2)">
-                        <h3>Beef Burrito</h3>
-                        <h5>Grilled Tortilla with grilled Beef and mixed vegetables</h5>
-                        <h6>Variatons: Chipotle-tomato sauce, Habanero sauce, Avocado sauce, more meat</h6>
-                    </div>
-
-
-                    <div id="sectionToBeToggled2" class="hide-extension button-layout">
-                        <button onclick="addToCart(2)" class="btn btn-primary">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="dish-selection-container">
-                    <div onclick="toggleButtons(3)">
-                        <h3>Pulled Pork Burrito Bowl</h3>
-                        <h5>Grilled Beef, mixed vegetables and rice</h5>
-                        <h6>Variatons: Chipotle-tomato sauce, Habanero sauce, Avocado sauce, more meat</h6>
-                    </div>
-
-
-                    <div id="sectionToBeToggled3" class="hide-extension button-layout">
-                        <button onclick="addToCart(3)" class="btn btn-primary">Add to Cart</button>
-                    </div>
-                </div>
-                <!-- End of Popular Dishes -->
-                <!-- Tex Mex Salads Dishes-->
-               
-              
+                <div id="popularElements"> </div>
+    
                 <div id="saladAnchor" class="dishes">
 
                     <img class="img-div" src="./img/salads.jpg">
@@ -99,78 +65,15 @@
                         <h4>Tex Mex Salads</h4>
                     </div>
                 </div>
-
-                <div class="dish-selection-container">
-                    <div onclick="toggleButtons(4)">
-                        <h3>Aztec Chicken Salad</h3>
-                        <h5>Grilled Beef, mixed vegetables and rice</h5>
-                        <h6>Variatons: Chipotle-tomato sauce, Habanero sauce, Avocado sauce, more meat</h6>
-                    </div>
-
-
-                    <div id="sectionToBeToggled4" class="hide-extension button-layout">
-                        <button onclick="addToCart(4)" class="btn btn-primary">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="dish-selection-container">
-                    <div onclick="toggleButtons(5)">
-                        <h3>Mexican Beef Salad</h3>
-                        <h5>Grilled Beef, mixed vegetables and rice</h5>
-                        <h6>Variatons: Chipotle-tomato sauce, Habanero sauce, Avocado sauce, more meat</h6>
-                    </div>
-
-
-                    <div id="sectionToBeToggled5" class="hide-extension button-layout">
-                        <button onclick="addToCart(5)" class="btn btn-primary">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="dish-selection-container">
-                    <div onclick="toggleButtons(6)">
-                        <h3>Mayan Avocado Salad</h3>
-                        <h5>Grilled Beef, mixed vegetables and rice</h5>
-                        <h6>Variatons: Chipotle-tomato sauce, Habanero sauce, Avocado sauce, more meat</h6>
-                    </div>
-
-
-                    <div id="sectionToBeToggled6" class="hide-extension button-layout">
-                        <button onclick="addToCart(6)" class="btn btn-primary">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="dish-selection-container">
-                    <div onclick="toggleButtons(7)">
-                        <h3>Veggi Salad</h3>
-                        <h5>Grilled Beef, mixed vegetables and rice</h5>
-                        <h6>Variatons: Chipotle-tomato sauce, Habanero sauce, Avocado sauce, more meat</h6>
-                    </div>
-
-
-                    <div id="sectionToBeToggled7" class="hide-extension button-layout">
-                        <button onclick="addToCart(7)" class="btn btn-primary">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="dish-selection-container">
-                    <div onclick="toggleButtons(8)">
-                        <h3>Vegan Salad</h3>
-                        <h5>Grilled Beef, mixed vegetables and rice</h5>
-                        <h6>Variatons: Chipotle-tomato sauce, Habanero sauce, Avocado sauce, more meat</h6>
-                    </div>
-
-
-                    <div id="sectionToBeToggled8" class="hide-extension button-layout">
-                        <button onclick="addToCart(8)" class="btn btn-primary">Add to Cart</button>
-                    </div>
-                </div>
-  <!-- End of Tex Mex Salads Dishes-->
+<div id="TexMexElements"></div>
+           
                 <div class="dishes">
 
                     <img class="img-div" src="./img/burritoHeader.jpg">
                     <div>
                         <h4>Aztec Burritos</h4>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -181,6 +84,13 @@
             <hr>
             <div id="shopping-list"> </div>
         </div>
+        
+        <div class="bg-light total" id="total"><hr>
+             <p>Discount: <span id="discount">1.75</span>€</p>
+            <p>Total price: <span id="totalPrice">0.00</span>€</p><br>
+            <p></p>
+            <button onclick="orderComplete()" class="btn btn-secondary">Buy Now</button>
+        </div> 
 </body>
 
 </html>

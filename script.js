@@ -1,77 +1,112 @@
-function toggleButtons(id){
-if(id == 1){
-    document.getElementById('sectionToBeToggled1').classList.toggle('hide-extension')
+function updateMenu() {
+    updatePopulars();
+    updateTexMex();
+    closeWindow();
 }
-if(id == 2){
-    document.getElementById('sectionToBeToggled2').classList.toggle('hide-extension')
-}
-if(id == 3){
-    document.getElementById('sectionToBeToggled3').classList.toggle('hide-extension')
-} 
-if(id == 4){
-    document.getElementById('sectionToBeToggled4').classList.toggle('hide-extension')
-} 
-if(id == 5){
-    document.getElementById('sectionToBeToggled5').classList.toggle('hide-extension')
-} 
-if(id == 6){
-    document.getElementById('sectionToBeToggled6').classList.toggle('hide-extension')
-} 
-if(id == 7){
-    document.getElementById('sectionToBeToggled7').classList.toggle('hide-extension')
-} 
-if(id == 8){
-    document.getElementById('sectionToBeToggled8').classList.toggle('hide-extension')
-} 
+
+function toggleButtons(id) {
+    let selector = 'sectionToBeToggled' + id;
+    document.getElementById(selector).classList.toggle('hide-extension');
 }
 
 
 //************  Cart logic *********************/
-let itemsList = ['Mayan Avocado Salad', 'Beef Burrito', 'Pulled Pork Burrito Bowl', 'Aztec Chicken Salad', 'Mexican Beef Salad', 'Mayan Avocado Salat', 'Veggi Salad','Vegan Salad'];
-let shoppingList = [];
+let items = [
+    { 'name': 'Mayan Avocado Salad', 'description': 'Fresh salad with mixed vegetables and lemon juiced avocado', 'variations': 'variatons: Chipotle-tomato sauce, Habanero sauce, more avoacado', 'price': 6.99 },
+    { 'name': 'Beef Burrito', 'description': 'Grilled Tortilla with grilled Beef and mixed vegetables', 'variations': 'Variatons: Chipotle-tomato sauce, Habanero sauce, Avocado sauce, more meat', 'price': 7.99 },
+    { 'name': 'Pulled Pork Burrito Bowl', 'description': 'Grilled Beef, mixed vegetables and rice', 'variations': 'Variatons: Chipotle-tomato sauce, Habanero sauce, Avocado sauce, more meat', 'price': 7.49 },
+    { 'name': 'Aztec Chicken Salad', 'price': 6.15 },
+    { 'name': 'Mexican Beef Salad', 'price': 6.99 },
+    { 'name': 'Mayan Avocado Salat', 'price': 6.99 },
+    { 'name': 'Veggi Salad', 'price': 5.99 },
+    { 'name': 'Vegan Salad', 'price': 5.99 }
 
+];
+
+
+
+let shoppingList = [];
+let shoppingPriceList = [];
+
+
+function updateTexMex() {
+    let productContainer = document.getElementById('TexMexElements');
+    for (let i = 3; i < 8; i += 1) {
+        let extendBtn = 'toggleButtons(' + i;
+        let addBtn = 'addToCart(' + i;
+        let item = document.createElement('div');
+        let name = items[i].name;
+        let description = items[i].description;
+        let variatons = items[i].variations;
+        let itemPrice = items[i].price;
+        let id = 'sectionToBeToggled' + i;
+        item.innerHTML = `<div class="dish-selection-container">
+    <div onclick="${extendBtn})">
+        <h3>${name}</h3>
+        <h5>${description}</h5>
+        <h6>${variatons}</h6>
+        <br>
+        <h1>${itemPrice} €</h1>
+    </div>
+    <div id="${id}" class="hide-extension button-layout">
+        <button onclick="${addBtn})" class="btn btn-primary">Add to Cart</button>
+    </div>
+</div>`;
+        productContainer.appendChild(item);
+    }
+}
+
+function updatePopulars() {
+    let productContainer = document.getElementById('popularElements');
+    for (let i = 0; i < 3; i += 1) {
+        let extendBtn = 'toggleButtons(' + i;
+        let addBtn = 'addToCart(' + i;
+        let item = document.createElement('div');
+        let name = items[i].name;
+        let description = items[i].description;
+        let variatons = items[i].variations;
+        let itemPrice = items[i].price;
+        let id = 'sectionToBeToggled' + i;
+        item.innerHTML = `<div class="dish-selection-container">
+    <div onclick="${extendBtn})">
+        <h3>${name}</h3>
+        <h5>${description}</h5>
+        <h6>${variatons}</h6>
+        <br>
+        <h1>${itemPrice} €</h1>
+    </div>
+    <div id="${id}" class="hide-extension button-layout">
+        <button onclick="${addBtn})" class="btn btn-primary">Add to Cart</button>
+    </div>
+</div>`;
+        productContainer.appendChild(item);
+    }
+}
 
 function addToCart(id) {
-    if (id == 1 && shoppingList.includes(itemsList[0]) != itemsList.includes(itemsList[0])) {
-        let item = itemsList[0];
+    if (shoppingList.includes(items[id].name) != items[id]['name'].includes(items[id].name)) {
+        let item = items[id].name;
+        let price = items[id].price;
         shoppingList.push(item);
+        shoppingPriceList.push(price);
+        updatePrice();
         updateCart();
+
     }
-    if (id == 2 && shoppingList.includes(itemsList[1]) != itemsList.includes(itemsList[1])) {
-        let item = itemsList[1];
-        shoppingList.push(item);
-        updateCart();
+}
+
+function updatePrice() {
+    let shoppingTotal = shoppingPriceList.reduce((acc, curr) => {
+        return acc + curr;
+    }, 0);
+    if (shoppingPriceList.length == 0) {
+        shoppingTotal = 0;
+    } else {
+        shoppingTotal -= 1.75;
     }
-    if (id == 3 && shoppingList.includes(itemsList[2]) != itemsList.includes(itemsList[2])) {
-        let item = itemsList[2];
-        shoppingList.push(item);
-        updateCart();
-    }
-    if (id == 4 && shoppingList.includes(itemsList[3]) != itemsList.includes(itemsList[3])) {
-        let item = itemsList[3];
-        shoppingList.push(item);
-        updateCart();
-    }
-    if (id == 5 && shoppingList.includes(itemsList[4]) != itemsList.includes(itemsList[4])) {
-        let item = itemsList[4];
-        shoppingList.push(item);
-        updateCart();
-    }
-    if (id == 6 && shoppingList.includes(itemsList[5]) != itemsList.includes(itemsList[5])) {
-        let item = itemsList[5];
-        shoppingList.push(item);
-        updateCart();
-    }
-    if (id == 7 && shoppingList.includes(itemsList[6]) != itemsList.includes(itemsList[6])) {
-        let item = itemsList[6];
-        shoppingList.push(item);
-        updateCart();
-    }
-    if (id == 8 && shoppingList.includes(itemsList[7]) != itemsList.includes(itemsList[7])) {
-        let item = itemsList[7];
-        shoppingList.push(item);
-        updateCart();
-    }
+    document.getElementById('totalPrice').innerHTML = shoppingTotal.toFixed(2);
+    console.log('Total Price is :' + shoppingTotal.toFixed(2))
+
 }
 
 function updateCart() {
@@ -79,12 +114,34 @@ function updateCart() {
     let container = document.getElementById('shopping-list');
     for (let i = 0; i < shoppingList.length; i += 1) {
         let item = document.createElement('div');
-        item.innerHTML = shoppingList[i] + '  ' + '<a href="#" onclick="deleteItem(' + i + ')" id="delButton" class="buttonDel"><img src="./trash.png"></a>';
+        item.innerHTML = shoppingList[i] + '  ' + shoppingPriceList[i] + '€' + '<a href="#" onclick="deleteItem(' + i + ')" id="delButton" class="buttonDel">   <img src="./trash.png"></a>';
         container.appendChild(item);
+
 
     }
 }
+
 function deleteItem(i) {
     shoppingList.splice(i, 1);
+    shoppingPriceList.splice(i, 1);
     updateCart();
+    updatePrice();
+}
+
+function orderComplete() {
+    if (shoppingList.length != 0) {
+        shoppingList = [];
+        shoppingPriceList = [];
+        updateCart();
+        updatePrice();
+        document.getElementById('complete').classList.remove('hide');
+    }else{
+        document.getElementById('incomplete').classList.remove('hide');
+    }
+
+}
+
+function closeWindow() {
+    document.getElementById('complete').classList.add('hide');
+    document.getElementById('incomplete').classList.add('hide');
 }

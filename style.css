@@ -24,13 +24,39 @@ body {
 }
 .main-menu-container {
     height: 10vh;
-    width: 80%;
+    width: 94%;
     background-color: rgb(236, 232, 225);
     display: flex;
     justify-content: center;
     box-shadow: 0 3px 3px -3px rgb(88, 88, 88);
     position: sticky;
     
+}
+
+.order-complete img {
+    height: 60%;
+    width: 60%;
+    object-fit: cover;
+}
+.order-complete {
+    background-color: rgba(255, 248, 220, 0.74);
+    position: fixed;
+    left: 30%;
+    right: 30%;
+    top: 10%;
+    bottom: 10%;
+    border-radius: 10px;
+    border: 1px solid black;
+    z-index: 11;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+.hide{
+display: none;
 }
 .main-menu {
     height: 10vh;
@@ -57,12 +83,12 @@ padding-bottom: 5px;
 
 .main-layout {
     display: flex;
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
 }
 
 .dishes {
-    width: 75%;
+    width: 85%;
     border-radius: 10px;
     background-color: rgb(206, 206, 206);
     margin: 32px;
@@ -81,7 +107,7 @@ padding-top: 22px;
 }
 .dish-selection-container{
     transition: all 225ms ease-in-out;
-    width: 75%;
+    width: 85%;
     border: 1px solid rgb(212, 208, 208);
     border-radius: 10px;
     margin: 32px;
@@ -89,6 +115,10 @@ padding-top: 22px;
 .dish-selection-container:hover{
 background-color:  rgb(226, 223, 223);
 cursor: pointer;
+}
+.dish-selection-container h1 {
+    padding-left: 16px;
+    color: coral;
 }
 .dish-selection-container h3{
     padding-left: 16px;
@@ -121,13 +151,24 @@ cursor: pointer;
 .shopping-cart {
     position: fixed;
     right: 0;
-    width: 20%;
-    height: 100%;
+    width: 25%;
+    height: 80%;
    text-align: center;
    padding-left: 16px;
    padding-right: 16px;
    border-left: 1px solid rgb(217, 217, 221);
     background-color: rgb(255, 255, 255);
+}
+.total {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 25%;
+    height: 40%;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-left: 1px solid rgb(217, 217, 221);
+     background-color: rgb(255, 255, 255);
 }
 
 .item-list {
