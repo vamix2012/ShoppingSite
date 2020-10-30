@@ -34,8 +34,8 @@ body {
 }
 
 .order-complete img {
-    height: 60%;
-    width: 60%;
+    height: 80%;
+    width: 58%;
     object-fit: cover;
 }
 .order-complete {
@@ -43,8 +43,8 @@ body {
     position: fixed;
     left: 30%;
     right: 30%;
-    top: 10%;
-    bottom: 10%;
+    top: 5%;
+    bottom: 5%;
     border-radius: 10px;
     border: 1px solid black;
     z-index: 11;

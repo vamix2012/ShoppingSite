@@ -96,13 +96,17 @@ function addToCart(id) {
 }
 
 function updatePrice() {
+    function percentage(num, per)
+{
+  return (num/100)*per;
+}
     let shoppingTotal = shoppingPriceList.reduce((acc, curr) => {
         return acc + curr;
     }, 0);
     if (shoppingPriceList.length == 0) {
         shoppingTotal = 0;
     } else {
-        shoppingTotal -= 1.75;
+        shoppingTotal -= percentage(shoppingTotal, 5);
     }
     document.getElementById('totalPrice').innerHTML = shoppingTotal.toFixed(2);
     console.log('Total Price is :' + shoppingTotal.toFixed(2))
