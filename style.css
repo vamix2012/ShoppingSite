@@ -88,7 +88,7 @@ padding-bottom: 5px;
 }
 
 .dishes {
-    width: 85%;
+    width: calc(93% - 64px);
     border-radius: 10px;
     background-color: rgb(206, 206, 206);
     margin: 32px;
@@ -107,7 +107,7 @@ padding-top: 22px;
 }
 .dish-selection-container{
     transition: all 225ms ease-in-out;
-    width: 85%;
+    width: calc(93% - 64px);
     border: 1px solid rgb(212, 208, 208);
     border-radius: 10px;
     margin: 32px;
